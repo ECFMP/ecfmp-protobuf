@@ -1,0 +1,21 @@
+syntax = "proto3";
+option go_package = "ecfmp.vatsim.net/grpc/discord";
+
+
+package ecfmp_discord;
+
+service Discord {
+    rpc Create(DiscordMessage) returns (CreateResponse);
+    rpc Update(DiscordMessage) returns (CreateResponse);
+}
+
+message DiscordMessage {
+    string username = 1;
+    string avatar_url = 2;
+    string content = 3;
+    string embeds = 4;
+}
+
+message CreateResponse {
+    string id = 1;
+}
