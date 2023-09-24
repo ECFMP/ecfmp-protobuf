@@ -1,8 +1,7 @@
 syntax = "proto3";
 option go_package = "ecfmp.vatsim.net/grpc/discord";
 
-
-package ecfmp_discord;
+package discord;
 
 service Discord {
     rpc Create(DiscordMessage) returns (CreateResponse);
