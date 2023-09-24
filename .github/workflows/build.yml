@@ -21,6 +21,9 @@ jobs:
       - name: Go Version
         run: go version
 
+      - name: Go Mod Init
+        run: go mod init
+
       - name: Install Go Proto Packages
         run: go get -u google.golang.org/protobuf/cmd/protoc-gen-go google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
