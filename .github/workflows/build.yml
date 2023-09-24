@@ -13,6 +13,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '^1.21'
+
+      - name: Go Version
+        run: go version
+
+      - name: Install Go Proto Packages
+        run: go get -u google.golang.org/protobuf/cmd/protoc-gen-go google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
+
       - name: Build Discord
         run: make discord_proto
 
