@@ -22,7 +22,9 @@ jobs:
         run: go version
 
       - name: Add Go to PATH
-        run: echo "/home/runner/go/bin" >> $GITHUB_PATH
+        run: |
+          echo $(go env GOPATH)
+          echo $(go env GOPATH)/bin >> $GITHUB_PATH
 
       - name: Go Mod Init
         run: go mod init ecfmp
