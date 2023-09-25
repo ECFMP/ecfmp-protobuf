@@ -19,7 +19,9 @@ jobs:
           go-version: '^1.21'
 
       - name: Go Version
-        run: go version
+        run: |
+          go version
+          go env GOPATH
 
       - name: Go Mod Init
         run: go mod init ecfmp
@@ -28,6 +30,7 @@ jobs:
         run: |
           go get google.golang.org/protobuf/cmd/protoc-gen-go
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+          ls -l $(go env GOPATH)/bin
 
       - name: Update PATH For Go Proto Packages
         run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
