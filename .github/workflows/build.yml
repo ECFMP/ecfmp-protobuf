@@ -23,11 +23,13 @@ jobs:
 
       - name: Add Go to PATH
         run: |
-          echo $(go env GOPATH)
           echo $(go env GOPATH)/bin >> $GITHUB_PATH
 
-      - name: Check Path
-        run: echo $PATH
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
+
+      - name: Check Protoc version
+        run: protoc --version
 
       - name: Go Mod Init
         run: go mod init ecfmp
@@ -36,16 +38,6 @@ jobs:
         run: |
           go get google.golang.org/protobuf/cmd/protoc-gen-go
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
-          go list -m all
-          ls -la $(go env GOPATH)/bin
-          ls -la $(go env GOPATH)/pkg/mod
-          ls -la
-
-      - name: Install Protoc
-        uses: arduino/setup-protoc@v2
-
-      - name: Check Protoc version
-        run: protoc --version
 
       - name: Build Discord
         run: make discord_proto
