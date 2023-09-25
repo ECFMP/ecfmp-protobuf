@@ -37,7 +37,7 @@ jobs:
           go get google.golang.org/protobuf/cmd/protoc-gen-go
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
           go list -m all
-          ls -l $(go env GOPATH)/bin
+          ls -la $(go env GOPATH)/bin
 
       - name: Install Protoc
         uses: arduino/setup-protoc@v2
