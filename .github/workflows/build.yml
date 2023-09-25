@@ -16,7 +16,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.21'
+          go-version: "^1.21"
 
       - name: Go Version
         run: go version
@@ -30,9 +30,6 @@ jobs:
 
       - name: Check Protoc version
         run: protoc --version
-
-      - name: Go Mod Init
-        run: go mod init ecfmp
 
       - name: Install Go Proto Packages
         run: |
