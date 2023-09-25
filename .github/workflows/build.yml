@@ -35,6 +35,9 @@ jobs:
       - name: Update PATH For Go Proto Packages
         run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
+      - name: Check Path
+        run: echo $PATH
+
       - name: Install Protoc
         uses: arduino/setup-protoc@v2
 
