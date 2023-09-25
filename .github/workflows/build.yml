@@ -21,11 +21,11 @@ jobs:
       - name: Go Version
         run: go version
 
-      - name: Go Mod Init
-        run: go mod init ecfmp
-
       - name: Add Go to PATH
         run: echo "/home/runner/go/bin" >> $GITHUB_PATH
+
+      - name: Go Mod Init
+        run: go mod init ecfmp
 
       - name: Install Go Proto Packages
         run: |
