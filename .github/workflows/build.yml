@@ -27,7 +27,7 @@ jobs:
           echo $(go env GOPATH)/bin >> $GITHUB_PATH
 
       - name: Check Path
-        run: echo $GITHUB_PATH
+        run: echo $PATH
 
       - name: Go Mod Init
         run: go mod init ecfmp
