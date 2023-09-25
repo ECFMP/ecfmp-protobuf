@@ -26,18 +26,15 @@ jobs:
       - name: Go Mod Init
         run: go mod init ecfmp
 
+      - name: Update PATH For Go Proto Packages
+        run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+
       - name: Install Go Proto Packages
         run: |
           go get google.golang.org/protobuf/cmd/protoc-gen-go
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
           go list -m all
           ls -l $(go env GOPATH)/bin
-
-      - name: Update PATH For Go Proto Packages
-        run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
-
-      - name: Check Path
-        run: echo $PATH
 
       - name: Install Protoc
         uses: arduino/setup-protoc@v2
