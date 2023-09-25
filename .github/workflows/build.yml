@@ -25,7 +25,7 @@ jobs:
         run: go mod init ecfmp
 
       - name: Add Go to PATH
-        run: echo "::add-path::/home/runner/go/bin"
+        run: echo "/home/runner/go/bin" >> $GITHUB_PATH
 
       - name: Install Go Proto Packages
         run: |
