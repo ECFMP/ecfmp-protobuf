@@ -26,7 +26,7 @@ jobs:
 
       - name: Install Go Proto Packages
         run: |
-          go get github.com/golang/protobuf/protoc-gen-go
+          go get google.golang.org/protobuf/protoc-gen-go
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
       - name: Update PATH For Go Proto Packages
