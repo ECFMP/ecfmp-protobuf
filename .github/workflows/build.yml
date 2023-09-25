@@ -39,6 +39,7 @@ jobs:
           go list -m all
           ls -la $(go env GOPATH)/bin
           ls -la $(go env GOPATH)/pkg
+          ls -la
 
       - name: Install Protoc
         uses: arduino/setup-protoc@v2
