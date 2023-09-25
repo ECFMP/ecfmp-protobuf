@@ -24,7 +24,9 @@ jobs:
           go env GOPATH
 
       - name: Go Mod Init
-        run: go mod init ecfmp
+        run: |
+          go mod init ecfmp
+          go mod tidy
 
       - name: Update PATH For Go Proto Packages
         run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
