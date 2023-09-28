@@ -5,11 +5,11 @@ option go_package = "ecfmp.vatsim.net/grpc/discord";
 package ecfmp_discord;
 
 service Discord {
-    rpc Create(DiscordMessage) returns (CreateResponse);
-    rpc Update(DiscordMessage) returns (CreateResponse);
+    rpc Create(CreateRequest) returns (CreateResponse);
+    rpc Update(UpdateRequest) returns (UpdateResponse);
 }
 
-message DiscordMessage {
+message CreateRequest {
     string username = 1;
     string avatar_url = 2;
     string content = 3;
@@ -17,5 +17,17 @@ message DiscordMessage {
 }
 
 message CreateResponse {
+    string id = 1;
+}
+
+message UpdateRequest {
+    string id = 1;
+    string username = 2;
+    string avatar_url = 3;
+    string content = 4;
+    string embeds = 5;
+}
+
+message UpdateResponse {
     string id = 1;
 }
