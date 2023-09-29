@@ -12,7 +12,7 @@ service Discord {
 message DiscordEmbedsFields {
     string name = 1;
     string value = 2;
-    string inline = 3;
+    bool inline = 3;
 }
 
 message DiscordEmbeds {
