@@ -9,11 +9,25 @@ service Discord {
     rpc Update(UpdateRequest) returns (UpdateResponse);
 }
 
+message DiscordEmbedsFields {
+    string name = 1;
+    string value = 2;
+    string inline = 3;
+}
+
+message DiscordEmbeds {
+    string title = 1;
+    string description = 2;
+    string url = 3;
+    string color = 4;
+    string author = 5;
+    repeated DiscordEmbedsFields fields = 6;
+}
+
 message CreateRequest {
-    string username = 1;
-    string avatar_url = 2;
-    string content = 3;
-    string embeds = 4;
+    string avatar_url = 1;
+    string content = 2;
+    repeated DiscordEmbeds embeds = 3;
 }
 
 message CreateResponse {
@@ -22,10 +36,9 @@ message CreateResponse {
 
 message UpdateRequest {
     string id = 1;
-    string username = 2;
-    string avatar_url = 3;
-    string content = 4;
-    string embeds = 5;
+    string avatar_url = 2;
+    string content = 3;
+    repeated DiscordEmbeds embeds = 4;
 }
 
 message UpdateResponse {
