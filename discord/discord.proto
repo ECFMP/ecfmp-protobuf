@@ -24,8 +24,7 @@ message DiscordEmbeds {
 }
 
 message CreateRequest {
-    string avatar_url = 1;
-    string content = 2;
+    string content = 1;
     repeated DiscordEmbeds embeds = 3;
 }
 
@@ -35,9 +34,8 @@ message CreateResponse {
 
 message UpdateRequest {
     string id = 1;
-    string avatar_url = 2;
-    string content = 3;
-    repeated DiscordEmbeds embeds = 4;
+    string content = 2;
+    repeated DiscordEmbeds embeds = 3;
 }
 
 message UpdateResponse {
