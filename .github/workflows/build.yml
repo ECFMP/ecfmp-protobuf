@@ -13,28 +13,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: "^1.21"
-
-      - name: Go Version
-        run: go version
-
-      - name: Add Go to PATH
-        run: |
-          echo $(go env GOPATH)/bin >> $GITHUB_PATH
-
-      - name: Install Protoc
-        uses: arduino/setup-protoc@v2
-
-      - name: Check Protoc version
-        run: protoc --version
-
-      - name: Install Go Proto Packages
-        run: |
-          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+      - name: Pull Builder Container
+        run: make pull_builder
 
       - name: Build Discord
         run: make discord_proto

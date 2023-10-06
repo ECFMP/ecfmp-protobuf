@@ -1,5 +1,9 @@
+pull_builder:
+	docker pull namely/protoc-all
+
 discord_proto:
-	protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative ./discord/discord.proto
+	docker run -v  ./discord:/defs namely/protoc-all -f discord.proto -l go
+	docker run -v  ./discord:/defs namely/protoc-all -f discord.proto -l php
 
 health_proto:
-	protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative ./health/health.proto
+	docker run -v  ./health:/defs namely/protoc-all -f health.proto -l go
