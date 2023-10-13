@@ -23,8 +23,9 @@ message DiscordEmbeds {
 }
 
 message CreateRequest {
-    string content = 1;
-    repeated DiscordEmbeds embeds = 2;
+    string channel = 1;
+    string content = 2;
+    repeated DiscordEmbeds embeds = 3;
 }
 
 message CreateResponse {
