@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate Discord
+        run: |
+          docker run --rm \
+            -v $(pwd)/docs:/out \
+            -v $(pwd)/discord:/protos \
+            pseudomuto/protoc-gen-doc --doc_opt=markdown,discord.md
+
+      - name: Generate Discord
+        run: |
+          docker run --rm \
+            -v $(pwd)/docs:/out \
+            -v $(pwd)/health:/protos \
+            pseudomuto/protoc-gen-doc --doc_opt=markdown,health.md
+
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update docs [skip ci]"
+          commit_options: '--no-verify --signoff'
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    
+  
